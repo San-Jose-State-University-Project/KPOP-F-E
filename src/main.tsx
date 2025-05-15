@@ -1,11 +1,17 @@
 import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
+import GlobalStyle from "./styles/style.ts";
+import Home from './pages/home/home.tsx';
+import {theme} from "./styles/theme.ts";
+import {ThemeProvider} from "styled-components";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<App />} />
-        </Routes>
+        <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <Routes>
+                <Route path="/" element={<Home />} />
+            </Routes>
+        </ThemeProvider>
     </BrowserRouter>
 )
