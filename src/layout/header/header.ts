@@ -10,6 +10,7 @@ export  const Header = styled.header`
 `;
 export const Logo = styled.img`
     width: 130px;
+    cursor: pointer;
 `
 export const SearchBtn = styled.button`
     display: flex;
