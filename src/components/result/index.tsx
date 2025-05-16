@@ -12,7 +12,7 @@ export default function Result(){
     }
     return(
         <ResultBox>
-            <Artist onClick={()=>handleClick('/artist/:id')}>
+            <Artist onClick={()=>handleClick('/artist/1')}>
                 <ImgBox>
                     <img src={Img1} alt={"artist"} />
                 </ImgBox>
