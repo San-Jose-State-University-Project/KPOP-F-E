@@ -6,6 +6,7 @@ import {ThemeProvider} from "styled-components";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Trand from "./pages/trand/trand.tsx";
 import Search from "./pages/search/search.tsx";
+import Artist from "./pages/artist/artist.tsx";
 
 createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')!).render(
                 <Route path="/" element={<Home />} />
                 <Route path={'/trand'} element={<Trand />} />
                 <Route path={"/search"} element={<Search /> }/>
+                <Route path={"/artist/:id"} element={<Artist />} />
             </Routes>
         </ThemeProvider>
     </BrowserRouter>
