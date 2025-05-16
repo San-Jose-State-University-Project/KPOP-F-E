@@ -4,6 +4,7 @@ import Home from './pages/home/home.tsx';
 import {theme} from "./styles/theme.ts";
 import {ThemeProvider} from "styled-components";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
+import Trand from "./pages/trand/trand.tsx";
 
 createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
@@ -11,6 +12,7 @@ createRoot(document.getElementById('root')!).render(
             <GlobalStyle />
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path={'/trand'} element={<Trand />} />
             </Routes>
         </ThemeProvider>
     </BrowserRouter>
