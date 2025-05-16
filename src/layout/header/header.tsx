@@ -25,7 +25,7 @@ export default function Header(){
                     );
                 })}
             </S.Nav>
-            <S.SearchBtn>
+            <S.SearchBtn onClick={()=>handleClick('/search')}>
                 <img src={Search} alt={"search"} />
                 <p>Artist Search</p>
             </S.SearchBtn>
