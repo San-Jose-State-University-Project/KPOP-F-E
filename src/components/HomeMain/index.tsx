@@ -2,24 +2,24 @@ import * as S from "./style.ts"
 import Graph from '@/assets/graph.svg'
 
 export default function HomeMain() {
+    const isAnimation  = !localStorage.getItem("appeared")
     return (
         <S.HomeMain>
             <img width={'10%'} src={Graph} alt={"graph"} />
-            <h1 style={{fontSize: '6rem'}}>Providing</h1>
+            <S.moveH duration={0.5} delay ={isAnimation ? 3.6 : 0} style={{fontSize: '6rem', background:"none"}}>Providing</S.moveH>
             <S.Title>
                 <div>
-                    <h1>K-POP</h1>
-                    <h1>Trands</h1>
+                    <S.moveH1 delay ={isAnimation ? 3.6 : 0} duration={0.8}>K-POP Trands</S.moveH1>
                 </div>
             </S.Title>
-            <S.Line />
+            <S.Line delay ={isAnimation ? 3.8 : 0} duration={0.9} />
             <S.Desc>
-                <p>Provides</p>
-                <p> K-POP </p>
-                <p>trends </p>
-                <p>and </p>
-                <p>artist</p>
-                <p>information</p>
+                <S.moveP delay ={isAnimation ? 3.8 : 0} duration={1}>Provides</S.moveP>
+                <S.moveP delay ={isAnimation ? 3.8 : 0} duration={1.1}> K-POP </S.moveP>
+                <S.moveP delay ={isAnimation ? 3.8 : 0} duration={1.2}>trends </S.moveP>
+                <S.moveP delay ={isAnimation ? 3.8 : 0} duration={1.3}>and </S.moveP>
+                <S.moveP delay ={isAnimation ? 3.8 : 0} duration={1.4}>artist</S.moveP>
+                <S.moveP delay ={isAnimation ? 3.8 : 0} duration={1.5}>information</S.moveP>
             </S.Desc>
         </S.HomeMain>
     )
