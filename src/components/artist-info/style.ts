@@ -35,13 +35,14 @@ export const InfoBox = styled.section`
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         gap: 10px;
         width: 100%;
         height: 100%;
-        padding: 18% 0;
+        padding: 5% 0;
         border-left: 1px solid #7F7FC5;
         & > img{
-            width: 36px;
+            width: 60px;
         }
     }
     & > div:nth-child(1){
