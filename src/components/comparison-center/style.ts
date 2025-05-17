@@ -45,6 +45,23 @@ export const Comparison = styled.div`
         font-size: 1.5rem;
     }
 `
+const move = keyframes`
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`
+interface Props {
+    duration : number
+}
+export const moveP = styled.p<Props>`
+    animation: ${move} ${(props) => props.duration}s ease-in-out forwards;
+    opacity: 0;
+`
 export const EmotionBox = styled.div`
     display: flex;
     align-items: center;

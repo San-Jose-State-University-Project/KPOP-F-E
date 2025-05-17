@@ -14,19 +14,19 @@ export default function ComparisonCenter() {
             <h1>Comparison</h1>
             <S.ComBox>
                 <S.Comparison>
-                    <p>BTS</p>
+                    <S.moveP duration={0.8}>BTS</S.moveP>
                     <p>NAME</p>
-                    <p>BTS</p>
+                    <S.moveP duration={1}>BTS</S.moveP>
                 </S.Comparison>
                 <S.Comparison>
-                    <p>45000000 +</p>
+                    <S.moveP duration={1.2}>45000000 +</S.moveP>
                     <p>FOLLOWERS</p>
-                    <p>45000000 +</p>
+                    <S.moveP duration={1.4}>45000000 +</S.moveP>
                 </S.Comparison>
                 <S.Comparison>
-                    <p>95/100</p>
+                    <S.moveP duration={1.6}>95/100</S.moveP>
                     <p>POPULARITY</p>
-                    <p>95/100</p>
+                    <S.moveP duration={1.8}>95/100</S.moveP>
                 </S.Comparison>
                 <S.Comparison>
                     <S.EmotionBox>
