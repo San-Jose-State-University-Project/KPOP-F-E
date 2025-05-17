@@ -1,8 +1,19 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 export const MusicIcons = styled.div`
 `;
 
+const floating = keyframes`
+  0% {
+    transform: translate(0,  0px);
+  }
+  50% {
+    transform: translate(0, 15px);
+  }
+  100% {
+    transform: translate(0, -0px);
+  }
+`;
 export const Section = styled.section`
     width: 20vw;
     height: 80vh;
@@ -27,6 +38,7 @@ interface IconProps {
     top : number
     left? : number
     right? : number
+    duration : number
 }
 export const Icon = styled.img<IconProps>`
     width: ${(props) => props.width}%;
@@ -34,4 +46,5 @@ export const Icon = styled.img<IconProps>`
     top: ${(props) => props.top}%;
     left: ${(props) => props.left}rem;
     right: ${(props) => props.right}rem;
+    animation: ${floating} ${(props) => props.duration}s ease-in-out infinite;
 `
