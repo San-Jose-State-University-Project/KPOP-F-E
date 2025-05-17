@@ -121,10 +121,14 @@ export const Bar = styled.div`
     align-items: center;
     justify-content: flex-end;
 `
-export const BarContent = styled.div`
+interface BarContentProps {
+    width : number
+    color : string
+}
+export const BarContent = styled.div<BarContentProps>`
     height: 100%;
-    background-color: #8248E4;
+    background-color: ${(props) => props.color};
     border-radius: 10px;
     transition: width 0.3s ease-in-out;
-    width: 80%;
+    width: ${(props)=> props.width}%;
 `

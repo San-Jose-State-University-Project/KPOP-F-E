@@ -44,43 +44,43 @@ export default function ComparisonCenter() {
                              <S.Graph>
                                  <div>
                                      <S.Bar>
-                                         <S.BarContent />
+                                         <S.BarContent color={"#EF7477"} width={30} />
                                      </S.Bar>
                                      <S.Label>anger</S.Label>
                                  </div>
                                  <div>
                                      <S.Bar>
-                                         <S.BarContent />
+                                         <S.BarContent color={"white"} width={30} />
                                      </S.Bar>
                                      <S.Label>neutral</S.Label>
                                  </div>
                                  <div>
                                      <S.Bar>
-                                         <S.BarContent />
+                                         <S.BarContent color={"#76D0F3"} width={30} />
                                      </S.Bar>
                                      <S.Label>sadness</S.Label>
                                  </div>
                                  <div>
                                      <S.Bar>
-                                         <S.BarContent />
+                                         <S.BarContent color={"#8248E4"} width={30} />
                                      </S.Bar>
                                      <S.Label>surprise</S.Label>
                                  </div>
                                  <div>
                                      <S.Bar>
-                                         <S.BarContent />
+                                         <S.BarContent color={"#F1D162"} width={30} />
                                      </S.Bar>
                                      <S.Label>joy</S.Label>
                                  </div>
                                  <div>
                                      <S.Bar>
-                                         <S.BarContent />
+                                         <S.BarContent color={"#28A335"} width={30} />
                                      </S.Bar>
                                      <S.Label>disgust</S.Label>
                                  </div>
                                  <div>
                                      <S.Bar>
-                                         <S.BarContent />
+                                         <S.BarContent color={"#4C5EE5"} width={30} />
                                      </S.Bar>
                                      <S.Label>fear</S.Label>
                                  </div>
@@ -95,7 +95,7 @@ export default function ComparisonCenter() {
                     <S.EmotionBox>
                         <S.Emotion>
                             <p>delight</p>
-                            <img src={Delight} alt={"delight"} />
+                            <img src={Sorrow} alt={"Sorrow"} />
                         </S.Emotion>
                         <S.GraphBox>
                             <S.length style={{justifyContent : "flex-end"}}>
@@ -111,46 +111,46 @@ export default function ComparisonCenter() {
                             <S.Graph>
                                 <div>
                                     <S.Label >anger</S.Label>
-                                    <S.Bar>
-                                        <S.BarContent />
+                                    <S.Bar style={{justifyContent : "flex-start"}}>
+                                        <S.BarContent color={"#EF7477"} width={90} />
                                     </S.Bar>
                                 </div>
                                 <div>
                                     <S.Label>neutral</S.Label>
-                                    <S.Bar>
-                                        <S.BarContent />
+                                    <S.Bar style={{justifyContent : "flex-start"}}>
+                                        <S.BarContent color={"white"}  width={90} />
                                     </S.Bar>
                                 </div>
                                 <div>
                                     <S.Label>sadness</S.Label>
-                                    <S.Bar>
-                                        <S.BarContent />
+                                    <S.Bar style={{justifyContent : "flex-start"}}>
+                                        <S.BarContent color={"#76D0F3"} width={90} />
                                     </S.Bar>
                                 </div>
                                 <div>
                                     <S.Label>surprise</S.Label>
-                                    <S.Bar>
-                                        <S.BarContent />
+                                    <S.Bar style={{justifyContent : "flex-start"}}>
+                                        <S.BarContent color={"#8248E4"} width={90} />
                                     </S.Bar>
 
                                 </div>
                                 <div>
                                     <S.Label>joy</S.Label>
-                                    <S.Bar>
-                                        <S.BarContent />
+                                    <S.Bar style={{justifyContent : "flex-start"}}>
+                                        <S.BarContent color={"#F1D162"} width={90} />
                                     </S.Bar>
                                 </div>
                                 <div>
                                     <S.Label>disgust</S.Label>
-                                    <S.Bar>
-                                        <S.BarContent />
+                                    <S.Bar style={{justifyContent : "flex-start"}}>
+                                        <S.BarContent color={"#28A335"} width={90} />
                                     </S.Bar>
 
                                 </div>
                                 <div>
                                     <S.Label>fear</S.Label>
-                                    <S.Bar>
-                                        <S.BarContent />
+                                    <S.Bar style={{justifyContent : "flex-start"}}>
+                                        <S.BarContent color={"#4C5EE5"} width={90} />
                                     </S.Bar>
 
                                 </div>
