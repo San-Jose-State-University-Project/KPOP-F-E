@@ -11,6 +11,11 @@ import {useNavigate} from "react-router-dom";
 
 
 export default function ArtistInfo() {
+    const navigate = useNavigate();
+    const handleClick = (path : string)=>{
+        navigate(path)
+
+    }
     return (
         <S.Container>
             <h1>BTS</h1>
@@ -32,7 +37,7 @@ export default function ArtistInfo() {
                     <p>EMOTION</p>
                 </div>
             </S.InfoBox>
-            <S.Button>
+            <S.Button onClick={()=>handleClick(`/comparison/${1}`)}>
                 <img src={Comparison} alt={"comparison"} />
                 <p>Go this compare artist moods</p>
             </S.Button>

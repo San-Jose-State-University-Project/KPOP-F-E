@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import * as React from "react";
 import * as S from "./style.ts"
-import KTrand from "@/assets/k-trand.mp4"
+import KTrand from "@/assets/k-trand.webm"
 
 export default function Animation({children}: React.PropsWithChildren) {
     const [isAnimation, setIsAnimation] = useState(true);

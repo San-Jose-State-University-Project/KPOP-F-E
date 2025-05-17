@@ -1,6 +1,6 @@
 import Layout from "../../layout";
 import styled from "styled-components";
-import Bg from "../../components/Bg";
+import Bg from "../../components/bg";
 import ArtistInfo from "../../components/artist-info";
 
 

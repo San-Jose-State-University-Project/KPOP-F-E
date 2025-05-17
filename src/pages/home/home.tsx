@@ -1,7 +1,7 @@
 import Layout from "../../layout";
 import Slide from "../../components/slide";
 import MusicIcons from "../../components/music-icons";
-import HomeMain from "../../components/HomeMain";
+import HomeMain from "../../components/home-main";
 import Animation from "../../components/appeared";
 
 
