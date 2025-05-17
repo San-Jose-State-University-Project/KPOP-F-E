@@ -47,7 +47,7 @@ const SlideTrack = styled.div`
     align-items: center;
     gap: 10px;
     
-    animation: scroll 20s linear infinite;
+    animation: scroll 30s linear infinite;
     @keyframes scroll {
         0% { transform: translateX(40%); }
         100% { transform: translateX(-50%); }

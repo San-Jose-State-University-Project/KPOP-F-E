@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 export const TextBox = styled.section`
     position: absolute;
@@ -44,6 +44,23 @@ export const Comparison = styled.div`
         font-weight: 600;
         font-size: 1.5rem;
     }
+`
+const move = keyframes`
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`
+interface Props {
+    duration : number
+}
+export const moveP = styled.p<Props>`
+    animation: ${move} ${(props) => props.duration}s ease-in-out forwards;
+    opacity: 0;
 `
 export const EmotionBox = styled.div`
     display: flex;
@@ -125,10 +142,21 @@ interface BarContentProps {
     width : number
     color : string
 }
+const progressAnimation = keyframes`
+    from {
+        width: 0;
+    }
+    to {
+        width: ${props => props.width}%;
+    }
+`;
+
 export const BarContent = styled.div<BarContentProps>`
     height: 100%;
     background-color: ${(props) => props.color};
     border-radius: 10px;
     transition: width 0.3s ease-in-out;
     width: ${(props)=> props.width}%;
+    animation: ${progressAnimation} 1.5s cubic-bezier(0.1, 0, 0.05, 1) forwards;
+
 `
