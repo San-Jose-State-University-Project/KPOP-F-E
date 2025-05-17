@@ -33,6 +33,7 @@ export default function ArtistInfo() {
                     <p>POPULARITY</p>
                 </div>
                 <div>
+                    <p>delight</p>
                     <img src={Delight} alt={"delight"} />
                     <p>EMOTION</p>
                 </div>
