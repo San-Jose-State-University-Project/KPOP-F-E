@@ -7,6 +7,8 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Trand from "./pages/trand/trand.tsx";
 import Search from "./pages/search/search.tsx";
 import Artist from "./pages/artist/artist.tsx";
+import SearchComparison from "@/pages/search-comparison";
+import Comparison from "@/pages/comparison";
 
 createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
@@ -17,6 +19,8 @@ createRoot(document.getElementById('root')!).render(
                 <Route path={'/trand'} element={<Trand />} />
                 <Route path={"/search"} element={<Search /> }/>
                 <Route path={"/artist/:id"} element={<Artist />} />
+                <Route path={"/comparison/:id"} element={<SearchComparison />} />
+                <Route path={"/comparison/:id/:id"} element={<Comparison />} />
             </Routes>
         </ThemeProvider>
     </BrowserRouter>

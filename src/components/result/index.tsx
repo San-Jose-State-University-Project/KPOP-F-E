@@ -5,14 +5,19 @@ import {useNavigate} from "react-router-dom";
 import Heart from "@/assets/heart.svg"
 import People from "@/assets/people.svg"
 
-export default function Result(){
+export default function Result({height = 140, navi}  : {height : number, navi : string}) {
     const navigate = useNavigate()
     const handleClick = (path) =>{
-        navigate(path)
+        if(navi === "search"){
+            navigate("/artist/1")
+        }
+        else{
+            navigate(navi + "/1")
+        }
     }
     return(
         <ResultBox>
-            <Artist onClick={()=>handleClick('/artist/1')}>
+            <Artist height={height} onClick={()=>handleClick('/artist/1')}>
                 <ImgBox>
                     <img src={Img1} alt={"artist"} />
                 </ImgBox>
@@ -68,13 +73,13 @@ const ResultBox = styled.section`
     align-items: center;
     gap: 20px;
 `
-const Artist = styled.article`
+const Artist = styled.article<{height : number}>`
     background-color: #1D1D37;
     border-radius: 20px;
     padding: 15px 20px;
     display: grid;
     max-width: 50%;
-    height: 140%;
+    height: ${(props) => (props.height)}%;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     & > div{

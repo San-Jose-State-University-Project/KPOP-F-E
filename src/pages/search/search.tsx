@@ -14,7 +14,7 @@ export default function Search(){
                         <img src={SearchIcon} alt={"search"} />
                     </div>
                 </InputBox>
-                <Result />
+                <Result navi={"search"} height={140} />
             </Container>
         </Layout>
     )
@@ -26,7 +26,7 @@ export const Container = styled.main`
     display: flex;
     padding: 0 20.44rem;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 `
 export const InputBox = styled.div`
     width: 100%;
