@@ -8,6 +8,7 @@ import Amazing from '@/assets/amazing.svg'
 import Emotionless from '@/assets/emotionless.svg'
 import Afraid from '@/assets/afraid.svg'
 import {useNavigate} from "react-router-dom";
+import {moveDiv, moveH} from "./style.ts";
 
 
 export default function ArtistInfo() {
@@ -18,25 +19,25 @@ export default function ArtistInfo() {
     }
     return (
         <S.Container>
-            <h1>BTS</h1>
+            <S.moveH duration={0.8}>BTS</S.moveH>
             <S.InfoBox>
-                <div>
+                <S.moveDiv duration={1}>
                     <h2>canadian pop</h2>
                     <p>GENRES</p>
-                </div>
-                <div>
+                </S.moveDiv>
+                <S.moveDiv  duration={1.2}>
                     <h2>45000000 + </h2>
                     <p>FOLLOWERS</p>
-                </div>
-                <div>
+                </S.moveDiv>
+                <S.moveDiv  duration={1.4}>
                     <h2>95/100</h2>
                     <p>POPULARITY</p>
-                </div>
-                <div>
+                </S.moveDiv>
+                <S.moveDiv  duration={1.6}>
                     <p>delight</p>
                     <img src={Delight} alt={"delight"} />
                     <p>EMOTION</p>
-                </div>
+                </S.moveDiv>
             </S.InfoBox>
             <S.Button onClick={()=>handleClick(`/comparison/${1}`)}>
                 <img src={Comparison} alt={"comparison"} />
