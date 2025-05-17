@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 export const Container = styled.main`
     width: 100%;
@@ -27,6 +27,25 @@ export const Button = styled.button`
         opacity: 0.7;
     }
 `
+const move = keyframes`
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`
+export const moveH = styled.h1<Props>`
+    animation: ${move} ${(props) => props.duration}s ease-in-out forwards;
+`
+export const moveDiv = styled.div<Props>`
+    animation: ${move} ${(props) => props.duration}s ease-in-out forwards;
+`
+interface Props {
+    duration : number
+}
 export const InfoBox = styled.section`
     width: 100%;
     display: grid;
