@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 export const TextBox = styled.section`
     position: absolute;
@@ -125,10 +125,21 @@ interface BarContentProps {
     width : number
     color : string
 }
+const progressAnimation = keyframes`
+    from {
+        width: 0;
+    }
+    to {
+        width: ${props => props.width}%;
+    }
+`;
+
 export const BarContent = styled.div<BarContentProps>`
     height: 100%;
     background-color: ${(props) => props.color};
     border-radius: 10px;
     transition: width 0.3s ease-in-out;
     width: ${(props)=> props.width}%;
+    animation: ${progressAnimation} 1.5s cubic-bezier(0.1, 0, 0.05, 1) forwards;
+
 `
