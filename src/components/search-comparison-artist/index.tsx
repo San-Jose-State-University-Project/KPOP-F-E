@@ -16,7 +16,7 @@ export default function SearchComparisonArtist() {
                     <img src={SearchIcon} alt={"search"} />
                 </div>
             </InputBox>
-            <Result navi={`/comparison/${params.id}`} height={120} />
+            <Result navi={`/comparison/${params.id}`} height={100} />
         </S.Container>
     )
 }

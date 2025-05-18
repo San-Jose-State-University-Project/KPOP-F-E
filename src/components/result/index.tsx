@@ -4,8 +4,9 @@ import Img1 from "@/assets/img1.png"
 import {useNavigate} from "react-router-dom";
 import Heart from "@/assets/heart.svg"
 import People from "@/assets/people.svg"
+import Skeleton from "@/components/skeleton/indes.tsx";
 
-export default function Result({height = 140, navi}  : {height : number, navi : string}) {
+export default function Result({height = 80, navi}  : {height : number, navi : string}) {
     const navigate = useNavigate()
     const handleClick = (path) =>{
         if(navi === "search"){
@@ -17,6 +18,7 @@ export default function Result({height = 140, navi}  : {height : number, navi : 
     }
     return(
         <ResultBox>
+            <Skeleton height={height} />
             <Artist height={height} onClick={()=>handleClick('/artist/1')}>
                 <ImgBox>
                     <img src={Img1} alt={"artist"} />
@@ -68,17 +70,16 @@ const ImgBox = styled.div`
 `
 const ResultBox = styled.section`
     width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
 `
 const Artist = styled.article<{height : number}>`
     background-color: #1D1D37;
     border-radius: 20px;
     padding: 15px 20px;
     display: grid;
-    max-width: 50%;
+    width: 100%;
     height: ${(props) => (props.height)}%;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
