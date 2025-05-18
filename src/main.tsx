@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import GlobalStyle from "./styles/style.ts";
 import Home from './pages/home/home.tsx';
 import {theme} from "./styles/theme.ts";
@@ -10,18 +11,22 @@ import Artist from "./pages/artist/artist.tsx";
 import SearchComparison from "@/pages/search-comparison";
 import Comparison from "@/pages/comparison";
 
+const queryClient = new QueryClient();
+
 createRoot(document.getElementById('root')!).render(
-    <BrowserRouter>
-        <ThemeProvider theme={theme}>
-            <GlobalStyle />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path={'/trand'} element={<Trand />} />
-                <Route path={"/search"} element={<Search /> }/>
-                <Route path={"/artist/:id"} element={<Artist />} />
-                <Route path={"/comparison/:id"} element={<SearchComparison />} />
-                <Route path={"/comparison/:id/:id"} element={<Comparison />} />
-            </Routes>
-        </ThemeProvider>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+            <ThemeProvider theme={theme}>
+                <GlobalStyle />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path={'/trand'} element={<Trand />} />
+                    <Route path={"/search"} element={<Search /> }/>
+                    <Route path={"/artist/:id"} element={<Artist />} />
+                    <Route path={"/comparison/:id"} element={<SearchComparison />} />
+                    <Route path={"/comparison/:id/:id"} element={<Comparison />} />
+                </Routes>
+            </ThemeProvider>
+        </BrowserRouter>
+    </QueryClientProvider>
 )
