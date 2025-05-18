@@ -27,6 +27,7 @@ export const Button = styled.button`
 
 export const Main = styled.main`
     width: 100%;
+    margin-right: 100px;
     display: flex;
     gap: 14px;
     padding: 0 30px;
@@ -34,6 +35,7 @@ export const Main = styled.main`
     height: 80%;
     flex-direction: column;
     & > div{
+        position: relative;
         display: flex;
         align-items: center;
     }
@@ -52,7 +54,7 @@ export const Info = styled.div<Props>`
     align-items: center;
     gap: 10px;
     justify-content: center;
-    width: 15%;
+    width: 20%;
     font-size: ${(props) => props.isRank ? "1.2rem" : "0.84rem"};
     & > div{
         text-align: center;
@@ -66,8 +68,9 @@ type ExtendedProps = Props & {
 };
 
 export const Bar = styled.div<ExtendedProps>`
-    width: ${(props) => props.length * 8}%;
+    width: ${(props) => props.length * 10}%;
     height: ${(props) => props.isRank ? "100" : "80"}%;
+    max-height: 60px;
     position: relative;
     overflow: hidden;
     background-color: #1D1D37;
@@ -95,4 +98,24 @@ export const BarColor = styled.div`
     position: absolute;
     right: 0;
     z-index: 10;
+`
+export const BarBox = styled.div`
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+`
+export const Trans = styled.div`
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    transform: translate(0%, 50%);
+    width: 10px;
+    height: 10px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 `
