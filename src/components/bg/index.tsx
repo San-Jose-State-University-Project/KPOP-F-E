@@ -39,7 +39,6 @@ const Blur = styled.div`
 const Profile = styled.div`
     width: 180px;
     border-radius: 20px;
-    background-color: red;
     overflow: hidden;
     height: 180px;
     position: absolute;
