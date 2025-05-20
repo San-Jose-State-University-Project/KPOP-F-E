@@ -3,7 +3,7 @@ import WhiteArrow from "@/assets/arrow-skeleton.svg";
 import Heart from "@/assets/skeleton-heart.svg";
 import People from "@/assets/skeleton-people.svg";
 
-export default function Skeleton({height = 140}  : {height : number}) {
+export default function Skeleton({height = 100}  : {height : number}) {
     return (
         <Artist height={height}>
             <ImgBox>
@@ -59,7 +59,7 @@ const Artist = styled.article<{height : number}>`
     display: grid;
     max-width: 100%;
     width: 100%;
-     height: ${(props) => (props.height)}%;
+     height: 180px;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     & > div{
@@ -73,16 +73,6 @@ const Artist = styled.article<{height : number}>`
         border-radius: 10px;
         margin-top: 10px;
         color: #3A3A64;
-    }
-    transition: 0.4s;
-    &:hover{
-        transform: translateY(-10px);
-        box-shadow: 0px 4px 10px 0px ${({ theme }) => theme.colors.primary};
-        cursor: pointer;
-    }
-    &:active{
-        transform: translateY(0px);
-        box-shadow: none;
     }
 `
 const TitleBox = styled.div`

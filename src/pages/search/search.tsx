@@ -2,19 +2,55 @@ import Layout from "../../layout";
 import styled from "styled-components";
 import SearchIcon from "@/assets/searchIcon.svg"
 import Result from "../../components/result";
+import {useState} from "react";
+import {getSearch} from "@/api/artist.ts";
+import type {SearchArtist} from "@/types/artist.ts";
 
-export default function Search(){
-    return(
+export function Search() {
+    const [search, setSearch] = useState("");
+    const [searchData, setSearchData] = useState<SearchArtist[] | [] | string>([]);
+    const fetchData = async () => {
+        setSearchData([])
+        setIsLoading(true)
+        try{
+            const data = await getSearch(search);
+            setSearchData(data.results)
+        }catch (err){
+            setSearchData('X')
+            console.log(err)
+        }finally {
+            setIsLoading(false)
+        }
+    };
+    const handleSearch = () => {
+        if (search === "") return
+        fetchData()
+    }
+    const [isLoading, setIsLoading] = useState(false);
+
+    return (
         <Layout>
             <Container>
                 <h1>Search</h1>
                 <InputBox>
-                    <input type="text" placeholder="Enter artist name" />
-                    <div>
-                        <img src={SearchIcon} alt={"search"} />
+                    <input
+                        value={search}
+                        onChange={(e) => {
+                            setSearch(e.target.value)
+                        }}
+                        type="text"
+                        placeholder="Enter artist name"
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                                handleSearch();
+                            }
+                        }}
+                    />
+                    <div onClick={() => handleSearch()}>
+                        <img src={SearchIcon} alt={"search"}/>
                     </div>
                 </InputBox>
-                <Result navi={"search"} height={140} />
+                <Result searchData={searchData} navi={"search"} height={100} isLoading={isLoading}/>
             </Container>
         </Layout>
     )

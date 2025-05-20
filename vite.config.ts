@@ -15,5 +15,13 @@ export default defineConfig({
       usePolling: true,
       interval: 100,
     },
+    proxy:{
+      '/api': {
+        target: 'http://10.150.2.161:3030',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
   },
+
 })

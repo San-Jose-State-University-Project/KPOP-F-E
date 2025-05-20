@@ -6,7 +6,7 @@ import {theme} from "./styles/theme.ts";
 import {ThemeProvider} from "styled-components";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Trand from "./pages/trand/trand.tsx";
-import Search from "./pages/search/search.tsx";
+import {Search} from "./pages/search/search.tsx";
 import Artist from "./pages/artist/artist.tsx";
 import SearchComparison from "@/pages/search-comparison";
 import Comparison from "@/pages/comparison";
@@ -22,9 +22,9 @@ createRoot(document.getElementById('root')!).render(
                     <Route path="/" element={<Home />} />
                     <Route path={'/trand'} element={<Trand />} />
                     <Route path={"/search"} element={<Search /> }/>
-                    <Route path={"/artist/:id"} element={<Artist />} />
-                    <Route path={"/comparison/:id"} element={<SearchComparison />} />
-                    <Route path={"/comparison/:id/:id"} element={<Comparison />} />
+                    <Route path={"/artist/:name"} element={<Artist />} />
+                    <Route path={"/comparison/:name"} element={<SearchComparison />} />
+                    <Route path={"/comparison/:name/:name"} element={<Comparison />} />
                 </Routes>
             </ThemeProvider>
         </BrowserRouter>

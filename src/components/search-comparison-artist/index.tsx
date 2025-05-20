@@ -3,20 +3,42 @@ import SearchIcon from "@/assets/searchIcon.svg";
 import Result from "@/components/result";
 import {InputBox} from "@/pages/search/search.tsx";
 import {useParams} from "react-router-dom";
+import {useState} from "react";
+import type {SearchArtist} from "@/types/artist.ts";
+import {getSearch} from "@/api/artist.ts";
 
 export default function SearchComparisonArtist() {
     const params = useParams()
-
+    const [search, setSearch] = useState("");
+    const [searchData, setSearchData] = useState<SearchArtist[] | []>([])
+    const fetchData = async () => {
+        try{
+            const data = await getSearch(search);
+            setSearchData(data)
+        }catch (err){
+            console.log(err)
+        }
+    }
+    const handleSearch = ()=>{
+        if (search === "") return
+        fetchData();
+    }
     return (
         <S.Container>
             <h1>Search</h1>
             <InputBox>
-                <input type="text" placeholder="Enter artist name" />
+                <input
+                    value={search}
+                    onChange={(e)=> setSearch(e.target.value)}
+                    type="text"
+                    placeholder="Enter artist name"
+                    onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                />
                 <div>
                     <img src={SearchIcon} alt={"search"} />
                 </div>
             </InputBox>
-            <Result navi={`/comparison/${params.id}`} height={100} />
+            <Result searchData={searchData} navi={`/comparison/${params.name}`} height={100} />
         </S.Container>
     )
 }
