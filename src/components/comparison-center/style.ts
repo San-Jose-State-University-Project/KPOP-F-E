@@ -30,16 +30,28 @@ export const ComBox = styled.div`
 `
 export const Comparison = styled.div`
     display: flex;
+    position: relative;
     align-items: center;
     width: 80%;
     gap: 3%;
     justify-content: center;
     & > p:nth-child(2){
-        width: 100px;
-        text-align: center;
+        width: max-content;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    & > p:nth-child(1){
+        right: 60%;
+        transform: translateX(-100%);
+    }
+    & > p:nth-child(3){
+        left: 60%;
     }
     & > p:nth-child(1),
     & > p:nth-child(3) {
+        position: absolute;
+        white-space: nowrap;
         color: white;
         font-weight: 600;
         font-size: 1.5rem;
@@ -88,7 +100,7 @@ export const GraphBox = styled.div`
     align-items: center;
     gap: 10px;
     color: white;
-    width: 100%;
+    width: 80%;
     & > img{
         width: 100%;
     }

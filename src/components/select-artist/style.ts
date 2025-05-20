@@ -32,6 +32,9 @@ export const ArtistBox = styled.div`
             width: 100%;
         }
     }
+    & > h1{
+        text-align: center;
+    }
 `
 
 export const LoadingBox = styled.div`

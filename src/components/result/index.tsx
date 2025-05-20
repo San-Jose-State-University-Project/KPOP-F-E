@@ -1,51 +1,83 @@
 import styled from "styled-components";
 import WhiteArrow from "@/assets/whiteArrow.svg"
-import Img1 from "@/assets/img1.png"
 import {useNavigate} from "react-router-dom";
 import Heart from "@/assets/heart.svg"
 import People from "@/assets/people.svg"
 import Skeleton from "@/components/skeleton/indes.tsx";
+import type {SearchArtist} from "@/types/artist.ts";
+import Logo from "@/assets/onlylogo.svg"
 
-export default function Result({height = 80, navi}  : {height : number, navi : string}) {
+export default function Result({height, navi, isLoading, searchData}  : {height : number, navi : string, isLoading : boolean, searchData : SearchArtist[] | null| string}) {
     const navigate = useNavigate()
-    const handleClick = (path) =>{
+    const handleClick = (path : string, name : string) =>{
         if(navi === "search"){
-            navigate("/artist/1")
+            navigate(path + "/" + name)
         }
         else{
-            navigate(navi + "/1")
+            navigate(navi + "/" + name)
         }
     }
+    const num = 8 - (searchData?.length ?? 0)
     return(
         <ResultBox>
-            <Skeleton height={height} />
-            <Artist height={height} onClick={()=>handleClick('/artist/1')}>
-                <ImgBox>
-                    <img src={Img1} alt={"artist"} />
-                </ImgBox>
-                <div>
-                    <div>
-                        <TitleBox>
-                            <h2>artist name</h2>
-                            <img src={WhiteArrow} alt={"arrow"} />
-                        </TitleBox>
-                        <p>k-pop</p>
-                    </div>
-                    <Info>
+            {isLoading &&
+                Array.from({ length: 8 }).map(()=>{
+                    return(
+                        <Skeleton height={150} />
+                    )
+                })
+            }
+            {searchData && typeof searchData === "string" ? <h3>No search results</h3> : null}
+            {searchData && typeof searchData!== "string" ? searchData.map(item=>{
+                return(
+                    <Artist height={height} onClick={()=>handleClick('/artist', item.artist_name)}>
+                        {item.image_url ?
+                            <ImgBox>
+                                <img src={item.image_url} alt={"artist"} />
+                            </ImgBox>
+                            :
+                            <ImgBox>
+                                <img src={Logo} alt={"artist"} />
+                            </ImgBox>
+                        }
+
                         <div>
-                            <img src={Heart} alt={"heart"} />
-                            <p>3</p>
+                            <div>
+                                <TitleBox>
+                                    <h3>{item.artist_name}</h3>
+                                    <img src={WhiteArrow} alt={"arrow"} />
+                                </TitleBox>
+                            </div>
+                            <Info>
+                                <div>
+                                    <img src={Heart} alt={"heart"} />
+                                    <p>{item.popularity}</p>
+                                </div>
+                                <div>
+                                    <img src={People} alt={"people"} />
+                                    <p>{item.followers}</p>
+                                </div>
+                            </Info>
                         </div>
-                        <div>
-                            <img src={People} alt={"people"} />
-                            <p>3</p>
-                        </div>
-                    </Info>
-                </div>
-            </Artist>
+                    </Artist>
+                )
+            }) : null}
+            {
+                num > 0 &&
+                Array.from({ length: num }).map(()=>{
+                    return(
+                        <UnBox />
+                    )
+                })
+            }
         </ResultBox>
     )
 }
+const UnBox = styled.div`
+    padding: 15px 20px;
+    width: 100%;
+    height: 180px;
+`
 const Info = styled.div`
     display: flex;
     align-items: center;
@@ -70,9 +102,10 @@ const ImgBox = styled.div`
 `
 const ResultBox = styled.section`
     width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 4% 10px;
 `
 const Artist = styled.article<{height : number}>`
     background-color: #1D1D37;
@@ -80,7 +113,8 @@ const Artist = styled.article<{height : number}>`
     padding: 15px 20px;
     display: grid;
     width: 100%;
-    height: ${(props) => (props.height)}%;
+    height: 180px;
+    
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     & > div{
