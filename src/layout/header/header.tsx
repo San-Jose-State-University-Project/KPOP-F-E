@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 export default function Header(){
     const data = [
         {name : "Home", path : "/"},
-        {name : "Trand", path: "/trand"},
+        {name : "Trend", path: "/trend"},
     ]
     const navigate = useNavigate()
     const handleClick = (path) =>{

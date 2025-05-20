@@ -1,11 +1,11 @@
 import * as S from "./style.ts"
 import Delight from '@/assets/delight.svg'
 import Sorrow from '@/assets/sorrow.svg'
-import Anger from '@/assets/anger.svg'
-import Discusting from '@/assets/disgusting.svg'
-import Amazing from '@/assets/amazing.svg'
-import Emotionless from '@/assets/emotionless.svg'
-import Afraid from '@/assets/afraid.svg'
+// import Anger from '@/assets/anger.svg'
+// import Discusting from '@/assets/disgusting.svg'
+// import Amazing from '@/assets/amazing.svg'
+// import Emotionless from '@/assets/emotionless.svg'
+// import Afraid from '@/assets/afraid.svg'
 import {useParams} from "react-router-dom";
 
 
