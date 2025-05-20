@@ -14,12 +14,12 @@ export default function Result({height, navi, isLoading, searchData}  : {height 
             navigate(path + "/" + name)
         }
         else{
-            navigate(navi + "/1")
+            navigate(navi + "/" + name)
         }
     }
     const num = 8 - (searchData?.length ?? 0)
     return(
-        <ResultBox isLoading = {isLoading}>
+        <ResultBox>
             {isLoading &&
                 Array.from({ length: 8 }).map(()=>{
                     return(
@@ -100,7 +100,7 @@ const ImgBox = styled.div`
         height: 100%;
     }
 `
-const ResultBox = styled.section<{isLoading : boolean}>`
+const ResultBox = styled.section`
     width: 100%;
     height: 100%;
     display: grid;

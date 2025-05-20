@@ -45,7 +45,7 @@ export default function ArtistInfo() {
                             <p>EMOTION</p>
                         </S.moveDiv>
                     </S.InfoBox>
-                    <S.Button onClick={()=>handleClick(`/comparison/${1}`)}>
+                    <S.Button onClick={()=>handleClick(`/comparison/${data.artist_name}`)}>
                         <img src={Comparison} alt={"comparison"} />
                         <p>Go this compare artist moods</p>
                     </S.Button>

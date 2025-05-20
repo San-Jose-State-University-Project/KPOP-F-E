@@ -6,17 +6,20 @@ import Discusting from '@/assets/disgusting.svg'
 import Amazing from '@/assets/amazing.svg'
 import Emotionless from '@/assets/emotionless.svg'
 import Afraid from '@/assets/afraid.svg'
+import {useParams} from "react-router-dom";
 
 
 export default function ComparisonCenter() {
+    const params = useParams()
+
     return (
         <S.TextBox>
             <h1>Comparison</h1>
             <S.ComBox>
                 <S.Comparison>
-                    <S.moveP duration={0.8}>BTS</S.moveP>
+                    <S.moveP duration={0.8}>{params.leftArtist}</S.moveP>
                     <p>NAME</p>
-                    <S.moveP duration={1}>BTS</S.moveP>
+                    <S.moveP duration={1}>{params.rightArtist}</S.moveP>
                 </S.Comparison>
                 <S.Comparison>
                     <S.moveP duration={1.2}>45000000 +</S.moveP>

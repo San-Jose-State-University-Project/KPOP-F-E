@@ -10,13 +10,19 @@ import {getSearch} from "@/api/artist.ts";
 export default function SearchComparisonArtist() {
     const params = useParams()
     const [search, setSearch] = useState("");
-    const [searchData, setSearchData] = useState<SearchArtist[] | []>([])
+    const [searchData, setSearchData] = useState<SearchArtist[] | [] | string>([])
+    const [isLoading, setIsLoading] = useState(false);
     const fetchData = async () => {
+        setSearchData([])
+        setIsLoading(true)
         try{
             const data = await getSearch(search);
-            setSearchData(data)
+            setSearchData(data.results)
         }catch (err){
+            setSearchData("X")
             console.log(err)
+        }finally {
+            setIsLoading(false)
         }
     }
     const handleSearch = ()=>{
@@ -38,7 +44,7 @@ export default function SearchComparisonArtist() {
                     <img src={SearchIcon} alt={"search"} />
                 </div>
             </InputBox>
-            <Result searchData={searchData} navi={`/comparison/${params.name}`} height={100} />
+            <Result isLoading={isLoading} searchData={searchData} navi={`/comparison/${params.name}`} height={100} />
         </S.Container>
     )
 }

@@ -42,6 +42,7 @@ export const moveH = styled.h1<Props>`
 `
 export const moveDiv = styled.div<Props>`
     animation: ${move} ${(props) => props.duration}s ease-in-out forwards;
+    text-align: center;
 `
 interface Props {
     duration : number

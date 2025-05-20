@@ -24,7 +24,7 @@ createRoot(document.getElementById('root')!).render(
                     <Route path={"/search"} element={<Search /> }/>
                     <Route path={"/artist/:name"} element={<Artist />} />
                     <Route path={"/comparison/:name"} element={<SearchComparison />} />
-                    <Route path={"/comparison/:name/:name"} element={<Comparison />} />
+                    <Route path={"/comparison/:leftArtist/:rightArtist"} element={<Comparison />} />
                 </Routes>
             </ThemeProvider>
         </BrowserRouter>
