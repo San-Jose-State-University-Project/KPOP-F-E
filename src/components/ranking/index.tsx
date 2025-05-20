@@ -71,7 +71,7 @@ export default function Ranking() {
                             </S.RankIcon>
                             <S.Info isRank = {isRank}>
                                 <div>
-                                    <h3>{item.h3}</h3>
+                                    <h4>{item.h3}</h4>
                                     <p>{item.p}</p>
                                 </div>
                             </S.Info>
@@ -87,7 +87,7 @@ export default function Ranking() {
                                 </S.Bar>
                                 {
                                     prevRank[idx] !== 0 &&
-                                    <S.Trans>
+                                    <S.Trans duration={0.8}>
                                         {prevRank[idx] > 0 &&
                                             <img src={Up} alt={'up'} />
                                         }

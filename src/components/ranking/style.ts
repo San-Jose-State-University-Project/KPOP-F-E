@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 export const Container = styled.main`
     width: 100%;
@@ -54,7 +54,7 @@ export const Info = styled.div<Props>`
     align-items: center;
     gap: 10px;
     justify-content: center;
-    width: 20%;
+    width: 30%;
     font-size: ${(props) => props.isRank ? "1.2rem" : "0.84rem"};
     & > div{
         text-align: center;
@@ -67,9 +67,19 @@ type ExtendedProps = Props & {
     length: number;
 };
 
+
+const progressAnimation = keyframes`
+    from {
+        width: 0;
+    }
+    to {
+        width: ${props => props.width}%;
+    }
+`;
 export const Bar = styled.div<ExtendedProps>`
     width: ${(props) => props.length * 10}%;
     height: ${(props) => props.isRank ? "100" : "80"}%;
+    animation: ${progressAnimation} 1.5s cubic-bezier(0.1, 0, 0.05, 1) forwards;
     max-height: 60px;
     position: relative;
     overflow: hidden;
@@ -107,7 +117,18 @@ export const BarBox = styled.div`
     position: relative;
     z-index: 5;
 `
-export const Trans = styled.div`
+const move = keyframes`
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`
+export const Trans = styled.div<{duration : number}>`
+    animation: ${move} ${(props) => props.duration}s ease-in-out forwards;
     position: absolute;
     right: -50px;
     top: 50%;
