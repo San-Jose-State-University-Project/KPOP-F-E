@@ -26,7 +26,6 @@ export default function Chart() {
                         <img src={RightArrow} alt={"arrow"} />
                     </S.Button>
                 </ChartBox>
-                {/*<Ranking />*/}
             </Container>
         </Layout>
     )

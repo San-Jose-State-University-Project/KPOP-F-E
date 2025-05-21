@@ -11,7 +11,7 @@ export const getKPOPChart = async () => {
 
 export const getTrend = async () => {
     try{
-        const res = await axiosInstance.get(`/trend`);
+        const res = await axiosInstance.get(`/kpop-subgenres`);
         return res.data
     }catch (err){
         console.log(err)
