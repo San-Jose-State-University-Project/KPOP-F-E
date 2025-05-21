@@ -1,8 +1,8 @@
 import * as S from "./style.ts"
 import {useState} from "react";
+import Loading from "@/components/loading";
 
-export default function GraphTrend() {
-    const data = Array.from({length : 18})
+export default function GraphTrend({percentages, isLoading} : {percentages : number[], isLoading : boolean}) {
     const genreKeys = [
         "k-pop",
         "art pop",
@@ -33,10 +33,14 @@ export default function GraphTrend() {
     }
     return (
         <S.Container>
-            <S.BarBox>
-                {data.map((_, idx)=>{
+            {isLoading && <Loading />}
+            <S.BarBox length = {percentages?.length ?? 18}>
+                {genreKeys.map((item, idx)=>{
+                    console.log(percentages[item] ?? 0)
                     return(
                             <S.Bar
+                                isLoading={isLoading}
+                                length={percentages[item]?.per ?? 0}
                                 key={idx}
                                 onMouseEnter={()=>handleMouseEnter(idx)}
                                 onMouseLeave={() => setIsHover(prev => prev.map(() => false))}
@@ -44,7 +48,7 @@ export default function GraphTrend() {
                                 {isHover[idx] &&
                                     <S.InfoBox>
                                         <S.Info>{genreKeys[idx]}</S.Info>
-                                        <S.Info>Total : 3</S.Info>
+                                        <S.Info>Total : {percentages[item].value}</S.Info>
                                     </S.InfoBox>
                                 }
                             </S.Bar>

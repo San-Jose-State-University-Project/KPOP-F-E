@@ -1,4 +1,4 @@
-import styled, {keyframes} from "styled-components";
+import styled, {keyframes, css} from "styled-components";
 
 export const Container = styled.div`
     width: 100%;
@@ -14,26 +14,34 @@ const barAnimation = () => {
             height: 0;
         }
         100%{
-            height: 100%;
+            height: ${({length}) =>length }%;
         }
     `
 }
-export const BarBox = styled.div`
+
+interface BarContentProps {
+    length : number
+    isLoading? : boolean
+}
+export const BarBox = styled.div<BarContentProps>`
     width: 100%;
     align-items: end;
     height: 80%;
     padding: 0 20px;
     display: grid;
-    grid-template-columns: repeat(18, 1fr);
+    grid-template-columns: repeat(${({length}) =>length }, 1fr);
     gap: 20px;
     border-bottom: 1px solid white;
 `
-export const Bar = styled.div`
+export const Bar = styled.div<BarContentProps>`
     width: 100%;
-    height: 100%;
+    height: ${({length}) =>length }%;
     position: relative;
-    animation: ${barAnimation} 1.5s cubic-bezier(0.1, 0, 0.05, 1) forwards;
-    background-color: #1D1D37;
+    ${({ isLoading }) =>
+            !isLoading &&
+            css`
+      animation: ${barAnimation} 0.8s ease-in-out forwards;
+    `}    background-color: #1D1D37;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -68,7 +76,7 @@ export const InfoBox = styled.div`
     width: max-content;
     border-radius: 10px;
     position: absolute;
-    top: -8%;
+    top: -50px;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
