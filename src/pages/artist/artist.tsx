@@ -3,19 +3,42 @@ import styled from "styled-components";
 import Bg from "../../components/bg";
 import ArtistInfo from "../../components/artist-info";
 import {useParams} from "react-router-dom";
-import {useGetArtistInfo} from "@/hooks/artist.ts";
+import {useGetArtistEmotion, useGetArtistInfo} from "@/hooks/artist.ts";
+import Loading from "@/components/loading";
 
 
 export default function Artist() {
     const { name } = useParams<{ name: string }>();
-    const {data : artist} = useGetArtistInfo(name ?? '');
-    // const {data : emotion} = useGetArtistEmotion(name ?? '');
-
+    const {data : artist, isLoading : artistLoading} = useGetArtistInfo(name ?? '');
+    // const {data : emotion, isLoading : emotionLoading} = useGetArtistEmotion(name ?? '');
+    const emotion = {
+        "artist_name": "BOL4",
+        "emotion_list": [
+            {
+                "title": "여행",
+                "emotion": "joy"
+            },
+            {
+                "title": "여행",
+                "emotion": "joy"
+            }
+        ],
+        "emotion_count": {
+            "joy": 1,
+            "sadness": 1,
+            "surprise": 1,
+            "anger": 1,
+            "disgust": 1,
+            "neutral": 2,
+            "fear": 3
+        }
+    }
     return (
         <Layout>
+            {artistLoading  && <Loading />}
             <Container>
-                <Bg img = {artist.image_url}  />
-               <ArtistInfo artist={artist} />
+                <Bg img = {artist?.image_url}  />
+               <ArtistInfo emotion = {emotion} artist={artist} />
             </Container>
         </Layout>
     )

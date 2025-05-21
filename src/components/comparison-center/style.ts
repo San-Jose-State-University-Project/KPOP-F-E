@@ -22,7 +22,7 @@ export const ComBox = styled.div`
     width: 100%;
     flex-direction: column;
     justify-content: space-between;
-    padding: 60px 0 10px 0;
+    padding: 60px 0 80px 0;
     align-items: center;
     gap: 20px;
     color: #8c8c8c;
@@ -55,6 +55,16 @@ export const Comparison = styled.div`
         color: white;
         font-weight: 600;
         font-size: 1.5rem;
+    }
+    & > div:nth-child(1),
+    & > div:nth-child(3) {
+        position: absolute;
+    }
+    & > div:nth-child(1){
+        right: 60%;
+    }
+    & > div:nth-child(3){
+        left:60%
     }
 `
 const move = keyframes`
