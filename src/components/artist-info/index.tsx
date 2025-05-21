@@ -7,18 +7,14 @@ import Delight from '@/assets/delight.svg'
 // import Amazing from '@/assets/amazing.svg'
 // import Emotionless from '@/assets/emotionless.svg'
 // import Afraid from '@/assets/afraid.svg'
-import {useNavigate, useParams} from "react-router-dom";
-import {useGetArtistEmotion, useGetArtistInfo} from "@/hooks/artist.ts";
+import {useNavigate} from "react-router-dom";
 
-
-export default function ArtistInfo() {
+export default function ArtistInfo({artist}) {
     const navigate = useNavigate();
-    const { name } = useParams<{ name: string }>();
+
     const handleClick = (path : string)=>{
         navigate(path)
     }
-    const {data : artist} = useGetArtistInfo(name ?? '');
-    // const {data : emotion} = useGetArtistEmotion(name ?? '');
     return (
         <S.Container>
             {artist &&
