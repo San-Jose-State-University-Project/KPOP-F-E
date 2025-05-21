@@ -9,7 +9,8 @@ import {useGetKPOPChart} from "@/hooks/trend.ts";
 
 
 export default function Chart() {
-    const {data} = useGetKPOPChart();
+    const date = new Date().toISOString().slice(0, 10);
+    const {data} = useGetKPOPChart("2025-05-15");
     return (
         <Layout>
             <Container>
@@ -19,8 +20,8 @@ export default function Chart() {
                         <img src={LeftArrow} alt={"arrow"} />
                     </Button>
                     <RankingBox>
-                        <TopRanking newData = {data?.top_50_tracks.slice(0, 3)} />
-                        <LowRanking newData = {data?.top_50_tracks.slice(3, data.top_50_tracks.length)} />
+                        <TopRanking newData = {data?.slice(0, 3)} />
+                        <LowRanking newData = {data?.slice(3, data.top_50_tracks.length)} />
                     </RankingBox>
                     <S.Button>
                         <img src={RightArrow} alt={"arrow"} />
