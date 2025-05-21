@@ -5,17 +5,18 @@ import LeftArtist from "@/components/left-artist";
 import RightArtist from "@/components/right-artist";
 import {useParams} from "react-router-dom";
 import {useGetArtistEmotion, useGetArtistInfo} from "@/hooks/artist.ts";
+import Loading from "@/components/loading";
 
 export default function Comparison() {
     const params = useParams()
     const leftArtist = params.leftArtist
     const rightArtist = params.rightArtist
 
-    const {data : left} = useGetArtistInfo(leftArtist ?? '');
-    const {data : right} = useGetArtistInfo(rightArtist ?? '');
+    const {data : left, isLoading : leftLoading} = useGetArtistInfo(leftArtist ?? '');
+    const {data : right, isLoading : rightLoading} = useGetArtistInfo(rightArtist ?? '');
 
-    // const {data : leftEmotion} = useGetArtistEmotion(leftArtist ?? '');
-    // const {data : rightEmotion} = useGetArtistEmotion(rightArtist ?? '');
+    // const {data : leftEmotion, isLoading : leftEmotionLoading} = useGetArtistEmotion(leftArtist ?? '');
+    // const {data : rightEmotion, isLoading : rightEmotionLoading} = useGetArtistEmotion(rightArtist ?? '');
 
     const leftEmotion = {
         "artist_name": "BOL4",
@@ -64,6 +65,7 @@ export default function Comparison() {
     }
     return (
         <Layout>
+            {leftLoading || rightLoading && <Loading />}
             <Container>
                 <Center Left={left} Right={right} LeftEmotion={ leftEmotion} RightEmotion={rightEmotion} />
                 <LeftArtist artist={left} />
