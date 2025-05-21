@@ -6,7 +6,7 @@ export default function RightArtist({artist} : {artist : Artist}) {
         <S.Container>
             <S.Box>
                 <S.ImgBox>
-                    <img src={artist.image_url} alt={"artist"} />
+                    <img src={artist?.image_url} alt={"artist"} />
                 </S.ImgBox>
                 <S.ContentBox>
                 </S.ContentBox>

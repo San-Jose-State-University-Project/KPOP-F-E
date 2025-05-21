@@ -1,12 +1,12 @@
 import * as S from "./style.ts"
 import Comparison from '@/assets/comparison.svg'
-import joy from '@/assets/delight.svg'
-import sadness from '@/assets/sorrow.svg'
+import joy from '@/assets/joy.svg'
+import sadness from '@/assets/sadness.svg'
 import anger from '@/assets/anger.svg'
-import disgust from '@/assets/disgusting.svg'
-import surprise from '@/assets/amazing.svg'
-import neutral from '@/assets/emotionless.svg'
-import fear from '@/assets/afraid.svg'
+import disgust from '@/assets/disgust.svg'
+import surprise from '@/assets/surprise.svg'
+import neutral from '@/assets/neutral.svg'
+import fear from '@/assets/fear.svg'
 import {useNavigate} from "react-router-dom";
 
 export default function ArtistInfo({artist, emotion}) {
