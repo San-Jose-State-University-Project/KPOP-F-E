@@ -18,8 +18,7 @@ export default function ArtistInfo() {
         navigate(path)
     }
     const {data : artist} = useGetArtistInfo(name ?? '');
-    const {data : emotion} = useGetArtistEmotion(name ?? '');
-    console.log(emotion)
+    // const {data : emotion} = useGetArtistEmotion(name ?? '');
     return (
         <S.Container>
             {artist &&

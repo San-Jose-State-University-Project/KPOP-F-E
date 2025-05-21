@@ -7,6 +7,7 @@ export default function Header(){
     const data = [
         {name : "Home", path : "/"},
         {name : "Trend", path: "/trend"},
+        {name : "Chart", path: "/chart"},
     ]
     const navigate = useNavigate()
     const handleClick = (path) =>{
@@ -19,7 +20,7 @@ export default function Header(){
                 {data.map((item, idx) => {
                     const isActive = window.location.pathname === item.path;
                     return (
-                        <p onClick={()=> handleClick(item.path)} style={{ fontWeight : isActive ? "bold" : "normal", color: isActive ? "#8248E4" : "white" }} key={idx}>
+                        <p onClick={()=> handleClick(item.path)} style={{color: isActive ? "#8248E4" : "white" }} key={idx}>
                             {item.name}
                         </p>
                     );
