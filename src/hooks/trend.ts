@@ -3,7 +3,7 @@ import * as API from "@/api/trend.ts";
 
 export const useGetKPOPChart = (date: string) => {
     return useQuery({
-        queryKey : ["kpopChart"],
+        queryKey : ["kpopChart", date],
         queryFn : async () => {
             const res = await API.getKPOPChart(date)
             return res

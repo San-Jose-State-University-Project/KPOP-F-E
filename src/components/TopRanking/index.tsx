@@ -1,14 +1,21 @@
 import * as S from "./style.ts"
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import Up from "@/assets/up.svg";
 import Down from "@/assets/down.svg";
 import First from "@/assets/1st.svg";
 import Second from "@/assets/2nd.svg";
 import Third from "@/assets/3rd.svg";
 
-export default function TopRanking({newData} : any) {
-    console.log(newData)
-
+export default function TopRanking({Rank} : any) {
+    const [newData, setNewData] = useState<any>(Rank);
+    const [data, setData] = useState([]);
+    const countRef = useRef(0);
+    useEffect(() => {
+        countRef.current += 1;
+        setData(newData);
+        setNewData(Rank);
+        checkArtist()
+    }, [Rank]);
     // const newData = [
     //     { h3: "너의 모든 순간", p: "성시경", thumbnail: Img1 },
     //     { h3: "첫사랑", p: "백예린", thumbnail: Img1 },
@@ -18,23 +25,20 @@ export default function TopRanking({newData} : any) {
         0,0,0
     ])
 
-    // const checkArtist = () => {
-    //     const newPrev = [...prevRank];
-    //
-    //     data.forEach(item => {
-    //         const newIndex = newData.findIndex(
-    //             d2 => d2.h3 === item.h3 && d2.p === item.p
-    //         );
-    //
-    //         if (newIndex !== -1) {
-    //             newPrev[newIndex] = data.indexOf(item) - newIndex;
-    //         }
-    //     });
-    //     setPrevRank(newPrev);
-    // };
-    // useEffect(() => {
-    //     checkArtist()
-    // }, [])
+    const checkArtist = () => {
+        const newPrev = [...prevRank];
+
+        data.forEach(item => {
+            const newIndex = newData.findIndex(
+                d2 => d2.track_name === item.track_name && d2.artist_name === item.artist_name
+            );
+
+            if (newIndex !== -1) {
+                newPrev[newIndex] = data.indexOf(item) - newIndex;
+            }
+        });
+        setPrevRank(newPrev);
+    };
     return (
         <S.Container>
             {
@@ -50,7 +54,7 @@ export default function TopRanking({newData} : any) {
                         <S.Card margin = {margin}>
                             <S.Crown src={idx === 0 ? Second : idx === 1 ? First : Third} alt="crown"/>
                             <S.ImgBox>
-                                <img src={item.image_url} alt="" />
+                                <img src={item.image_uri} alt="" />
                             </S.ImgBox>
                             <S.TextBox>
                                 {
@@ -70,8 +74,8 @@ export default function TopRanking({newData} : any) {
                                         }
                                     </S.Trans>
                                 }
-                                <h3 style={{fontSize : idx % 2 ? "1.4rem" : "1.2rem"}}>{item.name}</h3>
-                                <p style={{fontStyle : idx % 2 ? "1rem" : "0.8rem"}}>{item.artist}</p>
+                                <h3 style={{fontSize : idx % 2 ? "1.4rem" : "1.2rem"}}>{item.track_name.length > 20 ? item.track_name.slice(0, 20) + "..." : item.track_name}</h3>
+                                <p style={{fontStyle : idx % 2 ? "1rem" : "0.8rem"}}>{item.artist_names}</p>
                             </S.TextBox>
                         </S.Card>
                     )
