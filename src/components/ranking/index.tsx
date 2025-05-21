@@ -63,7 +63,6 @@ export default function Ranking() {
                 {data.map((item, idx)=>{
                     const isRank = idx < 3
                     const isLast = idx < data.length - 2
-                    console.log(prevRank[idx])
                     return(
                         <div>
                             <S.RankIcon>
