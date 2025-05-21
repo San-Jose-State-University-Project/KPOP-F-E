@@ -1,11 +1,11 @@
 import {useQuery} from "@tanstack/react-query";
 import * as API from "@/api/trend.ts";
 
-export const useGetKPOPChart = () => {
+export const useGetKPOPChart = (date: string) => {
     return useQuery({
-        queryKey : ["kpopChart"],
+        queryKey : ["kpopChart", date],
         queryFn : async () => {
-            const res = await API.getKPOPChart()
+            const res = await API.getKPOPChart(date)
             return res
         }
     })

@@ -68,11 +68,11 @@ export default function LowRanking({newData} : any) {
                         }
                         <h3>{idx+4}</h3>
                         <S.TextBox>
-                            <h4>{item.name}</h4>
-                            <p>{item.artist}</p>
+                            <h4>{item.track_name}</h4>
+                            <p>{item.artist_name}</p>
                         </S.TextBox>
                         <S.ImgBox>
-                            <img src={item.image_url} alt={"artist"} />
+                            <img src={item.image_uri} alt={"artist"} />
                         </S.ImgBox>
                         <S.BarColor />
                     </S.Card>
