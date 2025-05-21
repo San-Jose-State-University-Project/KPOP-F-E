@@ -1,14 +1,12 @@
 import styled from "styled-components";
-import BgImg from "@/assets/image2.png"
-import ProfileImg from "@/assets/image2.png"
 
-export default function Bg () {
+export default function Bg ({img} : {img : string}) {
     return (
         <BgBox>
-            <img src={BgImg} alt={"bg"} />
+            <img src={img} alt={"bg"} />
             <Blur />
             <Profile>
-                <img src={ProfileImg} alt={"profile"} />
+                <img src={img} alt={"profile"} />
             </Profile>
         </BgBox>
     )

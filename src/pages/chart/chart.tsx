@@ -1,14 +1,15 @@
 import Layout from "../../layout";
 import styled from "styled-components";
-// import Ranking from "../../components/ranking";
 import TopRanking from "@/components/TopRanking";
 import LowRanking from "@/components/LowRanking";
 import LeftArrow from "@/assets/left-arrow.svg";
 import RightArrow from "@/assets/right-arrow.svg";
 import * as S from "@/components/ranking/style.ts";
+import {useGetKPOPChart} from "@/hooks/trend.ts";
 
 
 export default function Chart() {
+    const {data} = useGetKPOPChart();
     return (
         <Layout>
             <Container>
@@ -18,8 +19,8 @@ export default function Chart() {
                         <img src={LeftArrow} alt={"arrow"} />
                     </Button>
                     <RankingBox>
-                        <TopRanking />
-                        <LowRanking />
+                        <TopRanking newData = {data?.top_50_tracks.slice(0, 3)} />
+                        <LowRanking newData = {data?.top_50_tracks.slice(3, data.top_50_tracks.length)} />
                     </RankingBox>
                     <S.Button>
                         <img src={RightArrow} alt={"arrow"} />
@@ -66,7 +67,7 @@ const Button = styled.button`
 `
 const RankingBox = styled.div`
     width: 75%;
-    height: 110%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
