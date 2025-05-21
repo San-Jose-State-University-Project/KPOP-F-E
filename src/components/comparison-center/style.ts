@@ -154,12 +154,12 @@ interface BarContentProps {
     width : number
     color : string
 }
-const progressAnimation = keyframes`
+const progressAnimation =(width)=> keyframes`
     from {
         width: 0;
     }
     to {
-        width: ${props => props.width}%;
+        width: ${width}%;
     }
 `;
 
@@ -168,7 +168,7 @@ export const BarContent = styled.div<BarContentProps>`
     background-color: ${(props) => props.color};
     border-radius: 10px;
     transition: width 0.3s ease-in-out;
-    width: ${(props)=> props.width}%;
-    animation: ${progressAnimation} 1.5s cubic-bezier(0.1, 0, 0.05, 1) forwards;
+    width: ${({width})=> width}%;
+    animation: ${({ width }) => progressAnimation(width)}  1.5s cubic-bezier(0.1, 0, 0.05, 1) forwards;
 
 `

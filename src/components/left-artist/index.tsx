@@ -1,12 +1,12 @@
 import * as S from "./style.ts"
-import Image1 from "@/assets/image2.png"
+import type {Artist} from "@/types/artist.ts";
 
-export default function LeftArtist() {
+export default function LeftArtist({artist} : {artist : Artist}) {
     return (
         <S.Container>
             <S.Box>
                 <S.ImgBox>
-                    <img src={Image1} alt={"artist"} />
+                    <img src={artist.image_url} alt={"artist"} />
                 </S.ImgBox>
                 <S.ContentBox>
                     <h1></h1>

@@ -7,11 +7,11 @@ import Sorrow from '@/assets/sorrow.svg'
 // import Emotionless from '@/assets/emotionless.svg'
 // import Afraid from '@/assets/afraid.svg'
 import {useParams} from "react-router-dom";
+import type {Artist, KpopEmotionData} from "@/types/artist.ts";
 
-
-export default function ComparisonCenter() {
+export default function ComparisonCenter({Left, Right, LeftEmotion, RightEmotion} : {Left: Artist, Right: Artist, LeftEmotion: KpopEmotionData, RightEmotion: KpopEmotionData}) {
     const params = useParams()
-
+    console.log(LeftEmotion, RightEmotion)
     return (
         <S.TextBox>
             <h1>Comparison</h1>
@@ -22,14 +22,14 @@ export default function ComparisonCenter() {
                     <S.moveP duration={1}>{params.rightArtist}</S.moveP>
                 </S.Comparison>
                 <S.Comparison>
-                    <S.moveP duration={1.2}>45000000 +</S.moveP>
+                    <S.moveP duration={1.2}>{Left.followers}</S.moveP>
                     <p>FOLLOWERS</p>
-                    <S.moveP duration={1.4}>45000000 +</S.moveP>
+                    <S.moveP duration={1.4}>{Right.followers}</S.moveP>
                 </S.Comparison>
                 <S.Comparison>
-                    <S.moveP duration={1.6}>95/100</S.moveP>
+                    <S.moveP duration={1.6}>{Left.popularity}</S.moveP>
                     <p>POPULARITY</p>
-                    <S.moveP duration={1.8}>95/100</S.moveP>
+                    <S.moveP duration={1.8}>{Right.popularity}</S.moveP>
                 </S.Comparison>
                 <S.Comparison>
                     <S.EmotionBox>
