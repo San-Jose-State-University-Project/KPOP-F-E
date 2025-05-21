@@ -1,5 +1,4 @@
 import * as S from './style.ts'
-import Image2 from '@/assets/image2.png'
 import {useParams} from "react-router-dom";
 
 export default function SelectArtist() {
@@ -8,7 +7,7 @@ export default function SelectArtist() {
         <S.Container>
             <S.ArtistBox>
                 <div>
-                    <img src={Image2} alt={"artist"} />
+                    <img src={params.image_url} alt={"artist"} />
                 </div>
                 <h1>{params.name}</h1>
             </S.ArtistBox>
