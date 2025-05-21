@@ -10,3 +10,13 @@ export const useGetArtistInfo = (name : string) =>{
         }
     })
 }
+
+export const useGetArtistEmotion = (name : string) => {
+    return useQuery({
+        queryKey : ["artistEmotion", name],
+        queryFn : async () => {
+            const res = await API.getArtistEmotion(name)
+            return res
+        }
+    })
+}

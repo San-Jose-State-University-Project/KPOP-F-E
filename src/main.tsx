@@ -5,7 +5,7 @@ import Home from './pages/home/home.tsx';
 import {theme} from "./styles/theme.ts";
 import {ThemeProvider} from "styled-components";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Trand from "./pages/trand/trand.tsx";
+import Trend from "@/pages/trend/trend.tsx";
 import {Search} from "./pages/search/search.tsx";
 import Artist from "./pages/artist/artist.tsx";
 import SearchComparison from "@/pages/search-comparison";
@@ -20,7 +20,7 @@ createRoot(document.getElementById('root')!).render(
                 <GlobalStyle />
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path={'/trand'} element={<Trand />} />
+                    <Route path={'/trend'} element={<Trend />} />
                     <Route path={"/search"} element={<Search /> }/>
                     <Route path={"/artist/:name"} element={<Artist />} />
                     <Route path={"/comparison/:name"} element={<SearchComparison />} />

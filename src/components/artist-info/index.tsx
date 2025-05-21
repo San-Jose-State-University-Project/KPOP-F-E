@@ -8,7 +8,7 @@ import Delight from '@/assets/delight.svg'
 // import Emotionless from '@/assets/emotionless.svg'
 // import Afraid from '@/assets/afraid.svg'
 import {useNavigate, useParams} from "react-router-dom";
-import {useGetArtistInfo} from "@/hooks/artist.ts";
+import {useGetArtistEmotion, useGetArtistInfo} from "@/hooks/artist.ts";
 
 
 export default function ArtistInfo() {
@@ -17,26 +17,28 @@ export default function ArtistInfo() {
     const handleClick = (path : string)=>{
         navigate(path)
     }
-    const {data} = useGetArtistInfo(name ?? '');
+    const {data : artist} = useGetArtistInfo(name ?? '');
+    const {data : emotion} = useGetArtistEmotion(name ?? '');
+    console.log(emotion)
     return (
         <S.Container>
-            {data &&
+            {artist &&
                 <>
-                    <S.moveH duration={0.8}>{data.artist_name}</S.moveH>
+                    <S.moveH duration={0.8}>{artist.artist_name}</S.moveH>
                     <S.InfoBox>
                         <S.moveDiv duration={1}>
                             <h2>{
-                                data.genres.length === 0 ?
+                                artist.genres.length === 0 ?
                                     "X"
-                                    : data.genres.map(item=><p>{item}</p>)}</h2>
+                                    : artist.genres.map(item=><p>{item}</p>)}</h2>
                             <p>GENRES</p>
                         </S.moveDiv>
                         <S.moveDiv  duration={1.2}>
-                            <h2>{data.followers}</h2>
+                            <h2>{artist.followers}</h2>
                             <p>FOLLOWERS</p>
                         </S.moveDiv>
                         <S.moveDiv  duration={1.4}>
-                            <h2>{data.popularity}</h2>
+                            <h2>{artist.popularity}</h2>
                             <p>POPULARITY</p>
                         </S.moveDiv>
                         <S.moveDiv  duration={1.6}>
@@ -45,7 +47,7 @@ export default function ArtistInfo() {
                             <p>EMOTION</p>
                         </S.moveDiv>
                     </S.InfoBox>
-                    <S.Button onClick={()=>handleClick(`/comparison/${data.artist_name}`)}>
+                    <S.Button onClick={()=>handleClick(`/comparison/${artist.artist_name}`)}>
                         <img src={Comparison} alt={"comparison"} />
                         <p>Go this compare artist moods</p>
                     </S.Button>

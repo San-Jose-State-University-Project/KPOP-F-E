@@ -13,3 +13,16 @@ export interface Track{
     duration_ms : number
     preview_url : string
 }
+
+type EmotionType = 'joy' | 'sadness' | 'surprise' | 'anger' | 'disgust' | 'neutral' | 'fear';
+
+interface EmotionEntry {
+    title: string;
+    emotion: EmotionType;
+}
+
+export interface KpopEmotionData {
+    artist_name: string;
+    emotion_list: EmotionEntry[];
+    emotion_count: Record<EmotionType, number>;
+}

@@ -9,7 +9,7 @@ export default function HomeMain() {
             <S.moveH duration={0.5} delay ={isAnimation ? 3.6 : 0} style={{fontSize: '6rem', background:"none"}}>Providing</S.moveH>
             <S.Title>
                 <div>
-                    <S.moveH1 delay ={isAnimation ? 3.6 : 0} duration={0.8}>K-POP Trands</S.moveH1>
+                    <S.moveH1 delay ={isAnimation ? 3.6 : 0} duration={0.8}>K-POP Trends</S.moveH1>
                 </div>
             </S.Title>
             <S.Line delay ={isAnimation ? 3.8 : 0} duration={0.9} />

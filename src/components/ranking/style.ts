@@ -68,18 +68,18 @@ type ExtendedProps = Props & {
 };
 
 
-const progressAnimation = keyframes`
+const progressAnimation = (width: number) => keyframes`
     from {
         width: 0;
     }
     to {
-        width: ${props => props.width}%;
+        width: ${width}%;
     }
 `;
 export const Bar = styled.div<ExtendedProps>`
     width: ${(props) => props.length * 10}%;
     height: ${(props) => props.isRank ? "100" : "80"}%;
-    animation: ${progressAnimation} 1.5s cubic-bezier(0.1, 0, 0.05, 1) forwards;
+    animation: ${({ length }) => progressAnimation(length * 10)} 1.5s cubic-bezier(0.1, 0, 0.05, 1) forwards;
     max-height: 60px;
     position: relative;
     overflow: hidden;

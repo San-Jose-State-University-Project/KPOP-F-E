@@ -16,3 +16,11 @@ export const getSearch = async (name : string) => {
         console.log(err)
     }
 }
+export const getArtistEmotion = async (name  : string) =>{
+    try{
+        const res = await axiosInstance.get(`/trend/artist/${name}`);
+        return res.data
+    }catch (err){
+        console.log(err)
+    }
+}

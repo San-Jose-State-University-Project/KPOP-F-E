@@ -7,3 +7,4 @@ export const theme = {
         graph : "#76F383"
     },
 };
+export type ThemeType = typeof theme;

@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import * as React from "react";
 import * as S from "./style.ts"
-import KTrand from "@/assets/k-trand.webm"
+import KTrend from "@/assets/k-trend.webm"
 
 export default function Animation({children}: React.PropsWithChildren) {
     const [isAnimation, setIsAnimation] = useState(true);
@@ -22,7 +22,7 @@ export default function Animation({children}: React.PropsWithChildren) {
         <S.Container>
             <S.Close1 />
             <S.Close2 />
-            <S.video src = {KTrand} autoPlay muted loop id="myVideo"></S.video>
+            <S.video src = {KTrend} autoPlay muted loop id="myVideo"></S.video>
             {children}
         </S.Container>
     )

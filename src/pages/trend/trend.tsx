@@ -2,7 +2,7 @@ import Layout from "../../layout";
 import styled from "styled-components";
 import Ranking from "../../components/ranking";
 
-export default function Trand() {
+export default function Trend() {
     return (
         <Layout>
             <Container>

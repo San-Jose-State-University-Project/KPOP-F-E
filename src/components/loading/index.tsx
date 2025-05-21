@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import KTrand from "@/assets/k-trand-loading.webm";
+import KTrend from "@/assets/k-trend-loading.webm";
 
 export default function Loading(){
     return(
         <VideoBox>
-            <Video src = {KTrand} autoPlay muted loop id="myVideo"></Video>
+            <Video src = {KTrend} autoPlay muted loop id="myVideo"></Video>
         </VideoBox>
     )
 }
