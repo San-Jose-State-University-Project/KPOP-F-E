@@ -22,7 +22,7 @@ export const ImgBox = styled.div`
     width: 100%;
     position: absolute;
     top: 0;
-    left:-50%;
+    left:-25%;
     height: 100%;
     overflow: hidden;
     & > img{

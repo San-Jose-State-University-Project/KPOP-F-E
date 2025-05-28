@@ -14,63 +14,63 @@ export default function Comparison() {
 
     const {data : left, isLoading : leftLoading} = useGetArtistInfo(leftArtist ?? '');
     const {data : right, isLoading : rightLoading} = useGetArtistInfo(rightArtist ?? '');
+    const {data : leftEmotion, isLoading : leftEmotionLoading} = useGetArtistEmotion(leftArtist ?? '');
+    const {data : rightEmotion, isLoading : rightEmotionLoading} = useGetArtistEmotion(rightArtist ?? '');
 
-    // const {data : leftEmotion, isLoading : leftEmotionLoading} = useGetArtistEmotion(leftArtist ?? '');
-    // const {data : rightEmotion, isLoading : rightEmotionLoading} = useGetArtistEmotion(rightArtist ?? '');
-
-    const leftEmotion = {
-        "artist_name": "BOL4",
-        "emotion_list": [
-            {
-                "title": "여행",
-                "emotion": "joy"
-            },
-            {
-                "title": "여행",
-                "emotion": "joy"
-            }
-        ],
-        "emotion_count": {
-            "joy": 1,
-            "sadness": 1,
-            "surprise": 1,
-            "anger": 1,
-            "disgust": 1,
-            "neutral": 2,
-            "fear": 3
-        }
-    }
-
-    const rightEmotion = {
-        "artist_name": "BOL4",
-        "emotion_list": [
-            {
-                "title": "여행",
-                "emotion": "joy"
-            },
-            {
-                "title": "여행",
-                "emotion": "joy"
-            }
-        ],
-        "emotion_count": {
-            "joy": 1,
-            "sadness": 1,
-            "surprise": 1,
-            "anger": 1,
-            "disgust": 1,
-            "neutral": 2,
-            "fear": 3
-        }
-    }
+    // const leftEmotion = {
+    //     "artist_name": "BOL4",
+    //     "emotion_list": [
+    //         {
+    //             "title": "여행",
+    //             "emotion": "joy"
+    //         },
+    //         {
+    //             "title": "여행",
+    //             "emotion": "joy"
+    //         }
+    //     ],
+    //     "emotion_count": {
+    //         "joy": 1,
+    //         "sadness": 1,
+    //         "surprise": 1,
+    //         "anger": 1,
+    //         "disgust": 1,
+    //         "neutral": 2,
+    //         "fear": 3
+    //     }
+    // }
+    //
+    // const rightEmotion = {
+    //     "artist_name": "BOL4",
+    //     "emotion_list": [
+    //         {
+    //             "title": "여행",
+    //             "emotion": "joy"
+    //         },
+    //         {
+    //             "title": "여행",
+    //             "emotion": "joy"
+    //         }
+    //     ],
+    //     "emotion_count": {
+    //         "joy": 0,
+    //         "sadness": 0,
+    //         "surprise": 0,
+    //         "anger": 1,
+    //         "disgust": 1,
+    //         "neutral": 2,
+    //         "fear": 3
+    //     }
+    // }
     return (
         <Layout>
-            {leftLoading || rightLoading && <Loading />}
-            <Container>
-                <Center Left={left} Right={right} LeftEmotion={ leftEmotion} RightEmotion={rightEmotion} />
-                <LeftArtist artist={left} />
-                <RightArtist artist={right} />
-            </Container>
+            {leftLoading || rightLoading ? <Loading /> :
+                <Container>
+                    <Center Left={left} Right={right} LeftEmotion={ leftEmotion} RightEmotion={rightEmotion} />
+                    <LeftArtist artist={left} />
+                    <RightArtist artist={right} />
+                </Container>
+            }
         </Layout>
     )
 }

@@ -4,46 +4,43 @@ import Down from "@/assets/down.svg";
 import Img1 from "@/assets/img1.png";
 import {useEffect, useState} from "react";
 
-export default function LowRanking({newData} : any) {
-    // const data = [
-    //     { h3: "취중고백", p: "김민석", thumbnail: Img1 },
-    //     { h3: "인연", p: "이선희", thumbnail: Img1 },
-    //     { h3: "안녕", p: "폴킴", thumbnail: Img1 },
-    //     { h3: "하루 끝", p: "아이유", thumbnail: Img1 },
-    //     { h3: "너의 모든 순간", p: "성시경", thumbnail: Img1 },
-    //     { h3: "봄날", p: "방탄소년단", thumbnail: Img1 },
-    //     { h3: "헤어지자 말해요", p: "박재정", thumbnail: Img1 }
-    // ];
-    // const newData = [
-    //     { h3: "별 보러 가자", p: "적재", thumbnail: Img1 },
-    //     { h3: "헤어지자 말해요", p: "박재정", thumbnail: Img1 },
-    //     { h3: "사건의 지평선", p: "윤하", thumbnail: Img1 },
-    //     { h3: "너를 만나", p: "폴킴", thumbnail: Img1 },
-    //     { h3: "All of My Life", p: "박원", thumbnail: Img1 },
-    //     { h3: "밤이 무서워요", p: "10CM", thumbnail: Img1 },
-    //     { h3: "봄 사랑 벚꽃 말고", p: "하이포 & 아이유", thumbnail: Img1 }
-    // ];
+export default function LowRanking({Rank} : any) {
+    const [newData, setNewData] = useState<any>();
+    const [data, setData] = useState();
+    // const dataRef = useRef();
+    const changeNewData = () => {
+        setNewData(Rank);
+    }
+    useEffect(() => {
+        changeNewData();
+    }, [Rank]);
+
+    useEffect(() => {
+        if (newData) {
+            setData(newData);
+            checkArtist();
+        }
+    }, [newData]);
+
     const [prevRank, setPrevRank] = useState([
-        0,0,0,0,0,0,0
+        0,0,0,0,0
     ])
-    //
-    // const checkArtist = () => {
-    //     const newPrev = [...prevRank];
-    //
-    //     data.forEach(item => {
-    //         const newIndex = newData.findIndex(
-    //             d2 => d2.h3 === item.h3 && d2.p === item.p
-    //         );
-    //
-    //         if (newIndex !== -1) {
-    //             newPrev[newIndex] = data.indexOf(item) - newIndex;
-    //         }
-    //     });
-    //     setPrevRank(newPrev);
-    // };
-    // useEffect(() => {
-    //     checkArtist()
-    // }, [])
+    const checkArtist = () => {
+        if(!data || !newData) return
+        const newPrev = [...prevRank];
+        data.forEach(item => {
+            const newIndex = newData.findIndex(
+                d2 => d2.track_name === item.track_name && d2.artist_names === item.artist_names
+            );
+
+            if (newIndex !== -1) {
+                newPrev[newIndex] = data.indexOf(item) - newIndex;
+            }
+        });
+        setPrevRank(newPrev);
+    };
+    console.log(prevRank)
+    console.log(data, newData)
     return (
         <S.Container>
             {newData && newData.map((item, idx)=>{
@@ -72,7 +69,7 @@ export default function LowRanking({newData} : any) {
                             <p>{item.artist_name}</p>
                         </S.TextBox>
                         <S.ImgBox>
-                            <img src={item.image_uri} alt={"artist"} />
+                            <img src={item.image_url} alt={"artist"} />
                         </S.ImgBox>
                         <S.BarColor />
                     </S.Card>

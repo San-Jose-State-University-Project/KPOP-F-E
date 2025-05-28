@@ -5,9 +5,10 @@ export const useGetArtistInfo = (name : string) =>{
     return useQuery({
         queryKey : ["artistInfo", name],
         queryFn : async () => {
+            console.log(name)
             const res = await API.getArtist(name)
             return res
-        }
+        },
     })
 }
 

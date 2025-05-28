@@ -1,13 +1,18 @@
 import * as S from './style.ts'
-import {useParams} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 
 export default function SelectArtist() {
     const params = useParams()
+    console.log(params)
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+
+    const imgUrl = queryParams.get('img');
     return (
         <S.Container>
             <S.ArtistBox>
                 <div>
-                    <img src={params.image_url} alt={"artist"} />
+                    <img src={imgUrl} />
                 </div>
                 <h1>{params.name}</h1>
             </S.ArtistBox>

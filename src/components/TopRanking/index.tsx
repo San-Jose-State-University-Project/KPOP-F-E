@@ -7,30 +7,32 @@ import Second from "@/assets/2nd.svg";
 import Third from "@/assets/3rd.svg";
 
 export default function TopRanking({Rank} : any) {
-    const [newData, setNewData] = useState<any>(Rank);
-    const [data, setData] = useState([]);
-    const countRef = useRef(0);
-    useEffect(() => {
-        countRef.current += 1;
-        setData(newData);
+    const [newData, setNewData] = useState<any>();
+    const [data, setData] = useState();
+    // const dataRef = useRef();
+    const changeNewData = () => {
         setNewData(Rank);
-        checkArtist()
+    }
+    useEffect(() => {
+        changeNewData();
     }, [Rank]);
-    // const newData = [
-    //     { h3: "너의 모든 순간", p: "성시경", thumbnail: Img1 },
-    //     { h3: "첫사랑", p: "백예린", thumbnail: Img1 },
-    //     { h3: "사랑은 늘 도망가", p: "임영웅", thumbnail: Img1 },
-    // ];
+
+    useEffect(() => {
+        if (newData) {
+            setData(newData);
+            checkArtist();
+        }
+    }, [newData]);
+
     const [prevRank, setPrevRank] = useState([
         0,0,0
     ])
-
     const checkArtist = () => {
+        if(!data || !newData) return
         const newPrev = [...prevRank];
-
         data.forEach(item => {
             const newIndex = newData.findIndex(
-                d2 => d2.track_name === item.track_name && d2.artist_name === item.artist_name
+                d2 => d2.track_name === item.track_name && d2.artist_names === item.artist_names
             );
 
             if (newIndex !== -1) {
@@ -39,6 +41,8 @@ export default function TopRanking({Rank} : any) {
         });
         setPrevRank(newPrev);
     };
+    console.log(prevRank)
+    console.log(data, newData)
     return (
         <S.Container>
             {
@@ -54,7 +58,7 @@ export default function TopRanking({Rank} : any) {
                         <S.Card margin = {margin}>
                             <S.Crown src={idx === 0 ? Second : idx === 1 ? First : Third} alt="crown"/>
                             <S.ImgBox>
-                                <img src={item.image_uri} alt="" />
+                                <img src={item.image_url} alt="" />
                             </S.ImgBox>
                             <S.TextBox>
                                 {

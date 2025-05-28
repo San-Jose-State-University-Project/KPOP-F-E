@@ -8,10 +8,14 @@ import neutral from '@/assets/neutral.svg'
 import fear from '@/assets/fear.svg'
 import {useParams} from "react-router-dom";
 import type {Artist, KpopEmotionData} from "@/types/artist.ts";
+import Loading from "@/components/loading";
 
 export default function ComparisonCenter({Left, Right, LeftEmotion, RightEmotion} : {Left: Artist, Right: Artist, LeftEmotion: KpopEmotionData, RightEmotion: KpopEmotionData}) {
     const params = useParams()
     const img = [joy, sadness, anger, disgust, surprise, neutral, fear]
+    if (!Left || !Right || !LeftEmotion || !RightEmotion) {
+        return <Loading />;
+    }
 
     const maxLeftEmotion = Object.entries(LeftEmotion.emotion_count).reduce((max, entry) => {
         const [emotion, count] = entry;
@@ -29,7 +33,6 @@ export default function ComparisonCenter({Left, Right, LeftEmotion, RightEmotion
     const rightEmotionPersent = Object.fromEntries(
         Object.entries(RightEmotion.emotion_count).map(([key, value]) => [key, {per : parseInt((value / maxRightEmotion[1] * 100).toFixed(0)), value : value}])
     );
-    console.log(img.find(item=>item.includes(maxLeftEmotion[0])))
     return (
         <S.TextBox>
             <h1>Comparison</h1>

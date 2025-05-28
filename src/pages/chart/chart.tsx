@@ -20,6 +20,15 @@ export default function Chart() {
         prevThursday.setDate(fromDate.getDate() - diff);
         return prevThursday;
     }
+
+    function getNextThursday(fromDate = new Date()) {
+        const dayOfWeek = fromDate.getDay();
+        const diff = (11 - dayOfWeek) % 7 || 7;
+        const nextThursday = new Date(fromDate);
+        nextThursday.setDate(fromDate.getDate() + diff);
+        return nextThursday;
+    }
+
     function formatDateToYMD(date) {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0'); // 0~11이므로 +1
@@ -32,7 +41,7 @@ export default function Chart() {
         <Layout>
             {isLoading && <Loading />}
             <Container>
-                <h2>Week 2 of May 2025</h2>
+                <h2>{formatDateToYMD(date)}</h2>
                 <ChartBox>
                     <Button onClick={()=>{
                         setDate(getPreviousThursday(date))
@@ -42,12 +51,16 @@ export default function Chart() {
                     </Button>
                     <RankingBox>
                         <TopRanking Rank = {data?.slice(0, 3)} />
-                        <LowRanking newData = {data?.slice(3, data.length)} />
+                        <LowRanking Rank = {data?.slice(3, data.length)} />
                     </RankingBox>
-                    {!(date < currentDay) &&
-                        <S.Button>
+                    {!(currentDay.getTime() === date.getTime()) ?
+                        <S.Button onClick={()=>{
+                            setDate(getNextThursday(date))
+                            refetch()
+                        }}>
                             <img src={RightArrow} alt={"arrow"} />
-                        </S.Button>
+                        </S.Button> :
+                       null
                     }
                 </ChartBox>
             </Container>

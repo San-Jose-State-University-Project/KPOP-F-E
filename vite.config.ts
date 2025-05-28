@@ -17,7 +17,7 @@ export default defineConfig({
     },
     proxy:{
       '/api': {
-        target: 'http://172.20.1.132:3030',
+        target: 'https://kpop.bitworkspace.kr',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }

@@ -1,6 +1,7 @@
 import axiosInstance from "@/lib/axiosInstance.ts";
 
 export const getArtist = async (name: string) => {
+    console.log(name)
     try{
         const response = await axiosInstance.get(`/artist/info/${name}`);
         return response.data;
