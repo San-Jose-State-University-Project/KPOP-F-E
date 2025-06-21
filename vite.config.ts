@@ -14,14 +14,14 @@ export default defineConfig({
     watch: {
       usePolling: true,
       interval: 100,
-    },
-    proxy:{
-      '/api': {
-        target: 'https://kpop.bitworkspace.kr',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
-      }
     }
+    // proxy:{
+    //   '/api': {
+    //     target: '',
+    //     changeOrigin: true,
+    //     rewrite: (path) => path.replace(/^\/api/, '')
+    //   }
+    // }
   },
 
 })

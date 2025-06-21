@@ -1,12 +1,17 @@
 import * as S from "./style.ts"
 import Up from "@/assets/up.svg";
 import Down from "@/assets/down.svg";
-import Img1 from "@/assets/img1.png";
 import {useEffect, useState} from "react";
+interface Props {
+    track_name: string;
+    artist_name: string;
+    rank: number;
+    image_url: string;
+}
 
-export default function LowRanking({Rank} : any) {
-    const [newData, setNewData] = useState<any>();
-    const [data, setData] = useState();
+export default function LowRanking({Rank}) {
+    const [newData, setNewData] = useState<Props[]>();
+    const [data, setData] = useState<Props[]>();
     // const dataRef = useRef();
     const changeNewData = () => {
         setNewData(Rank);
@@ -30,7 +35,7 @@ export default function LowRanking({Rank} : any) {
         const newPrev = [...prevRank];
         data.forEach(item => {
             const newIndex = newData.findIndex(
-                d2 => d2.track_name === item.track_name && d2.artist_names === item.artist_names
+                d2 => d2.track_name === item.track_name && d2.artist_name === item.artist_name
             );
 
             if (newIndex !== -1) {

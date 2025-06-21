@@ -14,8 +14,8 @@ export default function Comparison() {
 
     const {data : left, isLoading : leftLoading} = useGetArtistInfo(leftArtist ?? '');
     const {data : right, isLoading : rightLoading} = useGetArtistInfo(rightArtist ?? '');
-    const {data : leftEmotion, isLoading : leftEmotionLoading} = useGetArtistEmotion(leftArtist ?? '');
-    const {data : rightEmotion, isLoading : rightEmotionLoading} = useGetArtistEmotion(rightArtist ?? '');
+    const {data : leftEmotion} = useGetArtistEmotion(leftArtist ?? '');
+    const {data : rightEmotion} = useGetArtistEmotion(rightArtist ?? '');
 
     // const leftEmotion = {
     //     "artist_name": "BOL4",
