@@ -3,10 +3,10 @@ import styled from "styled-components";
 export default function Bg ({img} : {img : string}) {
     return (
         <BgBox>
-            <img src={img} alt={"bg"} />
+            <img src={img} />
             <Blur />
             <Profile>
-                <img src={img} alt={"profile"} />
+                <img src={img} />
             </Profile>
         </BgBox>
     )

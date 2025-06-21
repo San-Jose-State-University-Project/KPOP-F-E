@@ -14,14 +14,14 @@ export default defineConfig({
     watch: {
       usePolling: true,
       interval: 100,
-    },
-    proxy:{
-      '/api': {
-        target: 'http://172.20.1.132:3030',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
-      }
     }
+    // proxy:{
+    //   '/api': {
+    //     target: '',
+    //     changeOrigin: true,
+    //     rewrite: (path) => path.replace(/^\/api/, '')
+    //   }
+    // }
   },
 
 })

@@ -7,20 +7,27 @@ import {useEffect, useState} from "react";
 
 export default function Trend() {
     const {data, isLoading} = useGetTrend();
-    const [percentage , setPercentage] = useState([]);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const [percentage , setPercentage] = useState<any>([]); // 💥 강제로 any
 
-    const maxData = () =>{
+    const maxData = () => {
         if (!data) return;
         const values = Object.values(data) as number[];
-        if(values.length === 0) return
+        if (values.length === 0) return;
         const max = Math.max(...values);
 
         const percentages = Object.fromEntries(
-            Object.entries(data).map(([key, value]) => [key, {per : parseInt((value / max * 100).toFixed(0)), value : value}])
+          Object.entries(data).map(([key, value]) => [
+              key,
+              {
+                  per: parseInt(((value as number) / max * 100).toFixed(0)),
+                  value: value as number,
+              },
+          ])
         );
-
-        setPercentage(percentages);
-    }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        setPercentage(percentages as any);
+    };
     useEffect(() => {
         if (data) maxData()
     }, [data]);
